@@ -37,34 +37,20 @@ catch(error){
         //create delete button
         const deleteButton = document.createElement("button");
 deleteButton.textContent="Delete";
-deleteButton.onclick = () => deleteTodo(todo._id);
 
+//adds a click event Listener to delete todos
+deleteButton.onclick = () => {
+    deleteTodo(todo.id); // the id is there so that the todos can be deleted correctly
 
-li.appendChild(deleteButton)
-        // appends the list item to the todoList
-        todoList.appendChild(li);
-
+};
+li.appendChild(deleteButton); // appends the delete button to the llist item.
+todoList.appendChild(li);// appends the last item to the todo list 
 });
     }
     // function to delete todos
-    async function deleteTodo(todoId){
-        try{
-            const response = await fetch(`/api/todos/${todoId}`, {
-                method: 'DELETE'
-            }); // sends a delete request.
-            if ( response.ok){
-                console.log("Todo deleted successfully");
-                fetchTodos(); // to refresh the list of todos
-
-            }else{
-                console.error("Failed to delete todo");
-            }
-        }catch (error){
-            console.error("Error deleting todo", error);
-        }
-    }
-  
-
+function deleteTodo(id){
+console.log( `Todo with ID ${id} is to be deleted`);
+}
     
     // Handle form submission
     todoForm.addEventListener('submit', async (e) => {
@@ -85,24 +71,7 @@ li.appendChild(deleteButton)
     }else{
         alert("PLEASE ENTER TODO !!")
     }
-})
-// Handle click to clear all todos
-clearAllButton.addEventListener('click', async () => {
-    try {
-        const response = await fetch('/api/todos', { method: 'DELETE' }); // Send delete request to remove all todos
-        if (response.ok) {
-            console.log("All todos deleted successfully");
-            fetchTodos(); // Refresh the todo list
-        } else {
-            console.error("Failed to delete todos");
-        }
-    } catch (error) {
-        console.error("Error deleting todos:", error); // Log any errors
-    }
-
-
-
-    });
+});
     
     // Load todos when page loads
     fetchTodos();

@@ -32,26 +32,5 @@ router.post('/todos', async (req, res) => {
     }
 });
 
-// DELETE route to remove a To-Do item by its ID
-router.delete('/todos/:id', async (req, res) => {
-    try {
-        const { id } = req.params; // Extract the ID from request parameters
-        const deletedTodo = await Todo.findByIdAndDelete(id); // Attempt to delete the To-Do from the database
-        
-        // If no To-Do is found with the provided ID
-        if (!deletedTodo) {
-            return res.status(404).json({ message: 'Todo not found' }); // Respond with a 404 error
-        }
-        
-        // If deletion is successful
-        res.status(200).json({ message: 'Todo deleted successfully' }); // Respond with success message
-    } catch (error) {
-        // Handle any errors during deletion
-        res.status(500).json({ message: 'Error deleting todo', error }); // Respond with a 500 error
-    }
-  });
-  
-  // Export the router for use in server.js
-
 export { router as todoRouter };
 
