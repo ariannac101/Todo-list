@@ -18,8 +18,7 @@ try {
 } 
 // error displayed when todos cannot be fetched
 catch(error){
-
-    console.error("error fetching todos:", error);
+   console.error("error fetching todos", error);
 }
 
     }
