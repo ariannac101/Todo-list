@@ -9,7 +9,7 @@ async function fetchTodos() {
     // add your code
 try {
     // await the fetch input 
-    const response = await fetch("/api/todos"); // Fetchs the todos from the server
+    const response = await fetch(""); // Fetchs the todos from the server
     //input response
     const todos = await response.json();
     //Displays todo into the console
@@ -66,7 +66,18 @@ console.log( `Todo with ID ${id} is to be deleted`);
         // adds a new todo to the display page
         const li = document.createElement("li");
         li.textContent = newTodo;
-        todoList.appendChild(li);
+       //create a delete button 
+       const deleteButton = document.createElement('button');
+       deleteButton.textContent = 'Delete';
+
+       //add click event listener to the button
+       deleteButton.onclick = () => {
+        //console.log the delete action 
+        console.log( "Deleting: ", newTodo);
+        li.remove();// to remove the todo from the DOM
+       };
+       li.appendChild(deleteButton)
+       todoList.appendChild(li);
 
     }else{
         alert("PLEASE ENTER TODO !!")
