@@ -6,15 +6,14 @@ const clearAllButton = document.getElementById("clearAllButton");
 
 // Fetch all todos in a list of todos when the page loads.
 async function fetchTodos() {
-    // add your code
-try {
-    // await the fetch input 
-    const response = await fetch(""); // Fetchs the todos from the server
+    try {
+    // await the fetch input 0/api/todos
+
+    const response = await fetch("/api/todos"); // Fetchs the todos from the server
     //input response
     const todos = await response.json();
-    //Displays todo into the console
+    //Displays fectged todos
     displayTodos(todos);
-
 } 
 // error displayed when todos cannot be fetched
 catch(error){
@@ -25,15 +24,14 @@ catch(error){
     
     // Display todos in the list on the webpage
     function displayTodos(todos) {
-        //clears the previous todos
     todoList.innerHTML = ""; // clear existing todos
     todos.forEach(todo => {
         //creates a new list item, so that it gets added to the todoList.
         const li= document.createElement("li");
         // sets the text content to the todo title
-        li.textContent = todo.title
-
-        //create delete button
+        li.textContent = todo.title;
+    
+       //create delete button
         const deleteButton = document.createElement("button");
 deleteButton.textContent="Delete";
 
@@ -58,13 +56,15 @@ console.log( `Todo with ID ${id} is to be deleted`);
     // gets the value from the imput field and removes spaces using trim.
     const newTodo= todoInput.value.trim()
     if(newTodo){
-        // display todo added to the console.
+        // displays todo added to the console.
         console.log("New Todo:", newTodo)
         // clears the current input
         todoInput.value= "";
         // adds a new todo to the display page
         const li = document.createElement("li");
         li.textContent = newTodo;
+
+
        //create a delete button 
        const deleteButton = document.createElement('button');
        deleteButton.textContent = 'Delete';

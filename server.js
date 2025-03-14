@@ -7,7 +7,7 @@ dotenv.config();
 
 // Initialize express
 const app = express();
-const port = 3001;
+const port = 3000;
 
 //add near top of server.js
 app.use(express.static("client"));
