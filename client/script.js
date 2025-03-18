@@ -55,7 +55,7 @@ updateButton.onclick = () => {
 // update the todo in you data source 
             console.log(`Updating todo with ID ${todo.id}: ${updatedTitle}`);
 
-            //
+            //After updting, reflect the changes in the UI
             li.textContent = updatedTitle; // updates the displayed text with the new title
             li.appendChild(updateButton);
             li.appendChild(deleteButton); //Re-append the delete button 
@@ -69,7 +69,7 @@ updateButton.onclick = () => {
     li.innerHTML = ''; //clear the todo item content
     li.appendChild(inputField); // adds input field for editing
     li.appendChild(saveButon);// ads save button to confirm the changes
-}
+};
 
        //create delete button
         const deleteButton = document.createElement("button");
@@ -90,28 +90,13 @@ function deleteTodo(id){
 console.log( `Todo with ID ${id} is to be deleted`);
 }
     
-    // Handle form submission
-    todoForm.addEventListener('submit', async (e) => {
-        //prevents the default form submission 
-    e.preventDefault();
-    // gets the value from the imput field and removes spaces using trim.
-    const newTodo= todoInput.value.trim()
-    if(newTodo){
-        // displays todo added to the console.
-        console.log("New Todo:", newTodo)
-        // clears the current input
-        todoInput.value= "";
-        // adds a new todo to the display page
-        const li = document.createElement("li");
-        li.textContent = newTodo;
-
-
   // Handle form submission
   todoForm.addEventListener('submit', async (e) => {
     //prevents the default form submission 
 e.preventDefault();
 // gets the value from the imput field and removes spaces using trim.
-const newTodo= todoInput.value.trim()
+const newTodo= todoInput.value.trim();
+
 if(newTodo){
     // displays todo added to the console.
     console.log("New Todo:", newTodo)
@@ -141,7 +126,7 @@ if(newTodo){
 
     //handle saving the updated title when the save button is clicked
     saveButton.onclick = async () =>{
-        const updatedTitle;
+        const updatedTitle= inputField.value.trim();
 if (updatedTitle){
 //update the todo in you data source
 console.log(`Updating todo with ID ${todo.id}: ${updatedTitle}`);
